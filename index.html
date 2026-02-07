@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>Community — Hacker Collective</title>
+  <title>BIN/BASH/PT</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -111,13 +111,36 @@
     .hero-logo-3d{width:100%;height:100%;position:relative;z-index:2;transform-style:preserve-3d;animation:logoFloat 8s ease-in-out infinite}
     .hero-logo-3d img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 80px rgba(0,199,53,0.2));opacity:0;animation:logoReveal 1.8s var(--ease) .3s forwards}
     @keyframes logoFloat{0%,100%{transform:translateY(0) rotateY(0) rotateX(0)}25%{transform:translateY(-10px) rotateY(4deg) rotateX(2deg)}50%{transform:translateY(-5px) rotateY(-3deg) rotateX(-1deg)}75%{transform:translateY(-12px) rotateY(2deg) rotateX(3deg)}}
-    .logo-halo{position:absolute;inset:-60px;border-radius:50%;background:radial-gradient(circle,rgba(0,199,53,0.1) 0%,transparent 65%);animation:haloBreath 5s ease-in-out infinite}
-    @keyframes haloBreath{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.2)}}
-    .logo-orbit{position:absolute;border:1px solid rgba(0,199,53,0.1);border-radius:50%;animation:orbitSpin 12s linear infinite}
-    .logo-orbit:nth-child(2){inset:-35px;animation-duration:15s}.logo-orbit:nth-child(3){inset:-65px;animation-duration:20s;animation-direction:reverse;border-color:rgba(0,199,53,0.05)}.logo-orbit:nth-child(4){inset:-95px;animation-duration:28s;border-color:rgba(0,199,53,0.03)}
-    .logo-orbit::after{content:'';position:absolute;top:-2px;left:50%;width:4px;height:4px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
-    .logo-orbit:nth-child(3)::after{width:3px;height:3px;opacity:.5}.logo-orbit:nth-child(4)::after{width:2px;height:2px;opacity:.3}
-    @keyframes orbitSpin{100%{transform:rotateX(65deg) rotateZ(360deg)}}
+    .logo-halo{position:absolute;inset:-70px;border-radius:50%;background:radial-gradient(circle,rgba(0,199,53,0.12) 0%,rgba(0,199,53,0.03) 40%,transparent 65%);animation:haloBreath 4s ease-in-out infinite}
+    @keyframes haloBreath{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:1;transform:scale(1.25)}}
+    /* Orbit rings — multiple axes */
+    .logo-orbit{position:absolute;border-radius:50%;border:1px solid rgba(0,199,53,0.12)}
+    .logo-orbit:nth-child(2){inset:-30px;animation:spinX 10s linear infinite}
+    .logo-orbit:nth-child(3){inset:-58px;animation:spinY 14s linear infinite reverse;border-color:rgba(0,199,53,0.07)}
+    .logo-orbit:nth-child(4){inset:-86px;animation:spinZ 18s linear infinite;border-color:rgba(0,199,53,0.04)}
+    .logo-orbit::after{content:'';position:absolute;top:-3px;left:50%;width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent),0 0 24px rgba(0,199,53,0.3)}
+    .logo-orbit:nth-child(3)::after{width:5px;height:5px;top:auto;bottom:-3px;left:25%;box-shadow:0 0 10px var(--accent)}
+    .logo-orbit:nth-child(4)::after{width:4px;height:4px;top:50%;left:-2px;opacity:.6;box-shadow:0 0 8px var(--accent)}
+    /* Second dot on some orbits */
+    .logo-orbit:nth-child(2)::before{content:'';position:absolute;bottom:-3px;left:30%;width:4px;height:4px;border-radius:50%;background:var(--accent);opacity:.5;box-shadow:0 0 8px var(--accent)}
+    .logo-orbit:nth-child(3)::before{content:'';position:absolute;top:50%;right:-2px;width:3px;height:3px;border-radius:50%;background:var(--accent);opacity:.4;box-shadow:0 0 6px var(--accent)}
+    @keyframes spinX{100%{transform:rotateX(70deg) rotateZ(360deg)}}
+    @keyframes spinY{100%{transform:rotateY(70deg) rotateZ(360deg)}}
+    @keyframes spinZ{100%{transform:rotateX(35deg) rotateY(35deg) rotateZ(360deg)}}
+    /* Pulsing waves */
+    .logo-ring-pulse{position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(0,199,53,0.2);animation:ringWave 3s ease-out infinite;opacity:0}
+    .logo-ring-pulse.r2{animation-delay:1s}.logo-ring-pulse.r3{animation-delay:2s}
+    @keyframes ringWave{0%{transform:scale(.85);opacity:.7;border-width:2px}100%{transform:scale(2.2);opacity:0;border-width:0.5px}}
+    /* Scanner line */
+    .logo-scanner{position:absolute;inset:-86px;border-radius:50%;overflow:hidden;animation:scanSpin 6s linear infinite}
+    .logo-scanner::after{content:'';position:absolute;top:0;left:50%;width:50%;height:1px;background:linear-gradient(90deg,rgba(0,199,53,0.5),transparent);transform-origin:left center;box-shadow:0 0 12px rgba(0,199,53,0.3)}
+    @keyframes scanSpin{100%{transform:rotate(360deg)}}
+    /* Arc segments */
+    .logo-arc{position:absolute;border-radius:50%;border:2px solid transparent;border-top-color:rgba(0,199,53,0.15)}
+    .logo-arc:nth-child(8){inset:-42px;animation:arcSpin1 8s linear infinite}
+    .logo-arc:nth-child(9){inset:-72px;animation:arcSpin2 12s linear infinite reverse;border-top-color:rgba(0,199,53,0.08);border-left-color:rgba(0,199,53,0.05)}
+    @keyframes arcSpin1{100%{transform:rotate(360deg)}}
+    @keyframes arcSpin2{100%{transform:rotate(360deg)}}
     .hero-badge{display:inline-flex;align-items:center;gap:10px;padding:10px 24px;border:1px solid rgba(0,199,53,0.12);border-radius:100px;font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:28px;background:linear-gradient(135deg,var(--accent-dim),transparent);backdrop-filter:blur(10px);opacity:0;animation:fadeUp 1.2s ease-out 1s forwards}
     .badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:blink 2s infinite;box-shadow:0 0 10px var(--accent)}
     .hero-content h1{font-family:var(--serif);font-size:clamp(40px,7vw,96px);font-weight:400;line-height:1.02;letter-spacing:-.03em;max-width:760px;opacity:0;animation:heroTitle 1.6s var(--ease) 1.2s forwards}
@@ -207,6 +230,10 @@
     @keyframes logoReveal{0%{opacity:0;transform:scale(.6) rotateY(-25deg);filter:blur(16px)}100%{opacity:1;transform:scale(1) rotateY(0);filter:blur(0)}}
     @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 
+    /* About mobile version */
+    .about-mobile{display:none}
+    .about-mobile-inner{display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;min-height:calc(100vh - 100px)}
+
     /* ═══════════════ RESPONSIVE ═══════════════ */
 
     .hide-mobile{display:inline-block}
@@ -237,23 +264,16 @@
       .hero-content{justify-content:center;min-height:calc(100vh - 92px);padding-top:0}
       .hero-logo-wrap{width:130px;height:130px;margin-bottom:20px}
       .logo-halo{inset:-30px}
-      .logo-orbit:nth-child(2){inset:-20px}.logo-orbit:nth-child(3){inset:-38px}.logo-orbit:nth-child(4){inset:-55px}
+      .logo-orbit:nth-child(2){inset:-18px}.logo-orbit:nth-child(3){inset:-34px}.logo-orbit:nth-child(4){inset:-50px}
+      .logo-scanner{inset:-50px}
       .hero-badge{font-size:10px;padding:7px 14px;margin-bottom:16px}
       .hero-sub{margin-top:12px;font-size:14px}
       .hero-actions{margin-top:24px;width:100%}
       .btn-primary{width:100%;text-align:center;padding:14px 24px;font-size:13px}
 
-      /* Sobre — smaller pillars to fit all 3 */
-      .pillars-grid{grid-template-columns:1fr;gap:10px;margin-top:24px}
-      .pillar{min-height:auto;border-radius:14px}
-      .pillar-content{padding:20px 18px}
-      .pillar-icon{width:36px;height:36px;border-radius:10px;font-size:15px;margin-bottom:12px}
-      .pillar h3{font-size:17px;margin-bottom:4px}
-      .pillar p{font-size:12px;line-height:1.6}
-      .pillar-num{font-size:36px;top:8px;right:14px}
-      .s-title{margin-bottom:8px}
-      .s-desc{font-size:13px;margin-bottom:4px}
-      .s-label{margin-bottom:14px;font-size:10px;padding:4px 12px 4px 4px}
+      /* Sobre — mobile: just logo + text */
+      .about-desktop{display:none!important}
+      .about-mobile{display:block!important}
 
       /* Desafios — smaller challenge cards to fit all 3 */
       .challenges-grid{grid-template-columns:1fr;gap:10px;margin-top:24px}
@@ -286,17 +306,13 @@
       .section{padding:68px 10px 16px}
       .hero-logo-wrap{width:100px;height:100px;margin-bottom:16px}
       .logo-halo{inset:-20px}
-      .logo-orbit:nth-child(2){inset:-14px}.logo-orbit:nth-child(3){inset:-28px}.logo-orbit:nth-child(4){inset:-40px}
+      .logo-orbit:nth-child(2){inset:-14px}.logo-orbit:nth-child(3){inset:-26px}.logo-orbit:nth-child(4){inset:-38px}
+      .logo-scanner{inset:-38px}
       .hero-badge{padding:5px 10px;font-size:9px;margin-bottom:12px}
       .hero-content h1{font-size:32px}
       .hero-sub{font-size:13px}
       .btn-primary{padding:12px 20px;font-size:12px}
       .navbar-logo{height:28px}
-
-      .pillar-content{padding:16px 14px}
-      .pillar-icon{width:32px;height:32px;font-size:13px;margin-bottom:10px}
-      .pillar h3{font-size:15px}
-      .pillar p{font-size:11px}
 
       .challenge-card{height:120px}
       .challenge-card-content{padding:12px 14px}
@@ -342,7 +358,6 @@
       <li><a href="#" data-goto="0" data-i18n="nav_home">Início</a></li>
       <li><a href="#" data-goto="1" data-i18n="nav_about">Sobre</a></li>
       <li><a href="#" data-goto="2" data-i18n="nav_challenges">Desafios</a></li>
-      <li><a href="#" data-goto="3" data-i18n="nav_join">Juntar-se</a></li>
     </ul>
     <a href="#" data-goto="3" class="navbar-cta desk" data-i18n="nav_cta">Entrar</a>
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -353,7 +368,6 @@
   <a href="#" data-goto="0" data-i18n="nav_home">Início</a>
   <a href="#" data-goto="1" data-i18n="nav_about">Sobre</a>
   <a href="#" data-goto="2" data-i18n="nav_challenges">Desafios</a>
-  <a href="#" data-goto="3" data-i18n="nav_join">Juntar-se</a>
   <a href="#" data-goto="3" class="mob-cta" data-i18n="nav_cta">Entrar na Comunidade</a>
 </div>
 
@@ -364,20 +378,23 @@
       <div class="hero-logo-wrap">
         <div class="logo-halo"></div>
         <div class="logo-orbit"></div><div class="logo-orbit"></div><div class="logo-orbit"></div>
+        <div class="logo-ring-pulse"></div><div class="logo-ring-pulse r2"></div><div class="logo-ring-pulse r3"></div>
+        <div class="logo-scanner"></div>
+        <div class="logo-arc"></div><div class="logo-arc"></div>
         <div class="hero-logo-3d"><img src="logo.png" alt="Logo"></div>
       </div>
-      <div class="hero-badge"><span class="badge-dot"></span><span data-i18n="hero_badge">Em Breve — 2026</span></div>
       <h1 data-i18n="hero_title">Onde a <em>elite</em> se encontra</h1>
-      <p class="hero-sub" data-i18n="hero_sub">Uma comunidade exclusiva para hackers, builders e mentes curiosas que querem ir além do convencional.</p>
+      <p class="hero-sub" data-i18n="hero_sub">Uma comunidade exclusiva para hackers éticos, builders e mentes curiosas que querem ir além do convencional.</p>
       <div class="hero-actions">
-        <a href="#" data-goto="3" class="btn-primary" data-i18n="hero_cta_primary">Registar Interesse</a>
+        <a href="https://discord.gg/rkJTSzCt" class="btn-primary" data-i18n="hero_cta_primary">Discord</a>
         <a href="#" data-goto="1" class="btn-secondary hide-mobile" data-i18n="hero_cta_secondary">Saber Mais</a>
       </div>
     </div>
   </div>
 
   <div class="section" data-section="1">
-    <div class="section-inner">
+    <!-- Desktop version -->
+    <div class="section-inner about-desktop">
       <div class="s-label"><div class="s-label-dot"></div><span data-i18n="about_label">Quem Somos</span></div>
       <h2 class="s-title" data-i18n="about_title">Três pilares.<br>Uma missão.</h2>
       <p class="s-desc" data-i18n="about_desc">Construímos uma comunidade assente em conhecimento, colaboração e desafio constante. Cada membro contribui para elevar o padrão.</p>
@@ -385,6 +402,13 @@
         <div class="pillar" onmousemove="pM(event,this)" onmouseleave="pL(this)"><div class="pillar-bg" style="background-image:url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&q=70')"></div><div class="pillar-overlay"></div><div class="pillar-content"><div class="pillar-num">01</div><div class="pillar-icon">⚡</div><h3 data-i18n="pillar1_title">Conhecimento</h3><p data-i18n="pillar1_desc">Workshops, talks e recursos partilhados sobre cibersegurança, engenharia reversa, redes e muito mais.</p></div></div>
         <div class="pillar" onmousemove="pM(event,this)" onmouseleave="pL(this)"><div class="pillar-bg" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=70')"></div><div class="pillar-overlay"></div><div class="pillar-content"><div class="pillar-num">02</div><div class="pillar-icon">◆</div><h3 data-i18n="pillar2_title">Competição</h3><p data-i18n="pillar2_desc">Desafios CTF regulares, hackathons internos e competições externas como equipa unificada.</p></div></div>
         <div class="pillar" onmousemove="pM(event,this)" onmouseleave="pL(this)"><div class="pillar-bg" style="background-image:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=70')"></div><div class="pillar-overlay"></div><div class="pillar-content"><div class="pillar-num">03</div><div class="pillar-icon">∞</div><h3 data-i18n="pillar3_title">Comunidade</h3><p data-i18n="pillar3_desc">Um espaço seguro para experimentar, falhar e crescer. Mentoria entre pares e networking com a indústria.</p></div></div>
+      </div>
+    </div>
+    <!-- Mobile version — just text centered -->
+    <div class="section-inner about-mobile">
+      <div class="about-mobile-inner">
+        <h2 class="s-title" style="text-align:center" data-i18n="about_mob_title">Conhecimento.<br>Competição.<br><em>Comunidade.</em></h2>
+        <p class="s-desc" style="text-align:center;margin:0 auto" data-i18n="about_mob_desc">Uma comunidade assente em desafio constante. Cada membro eleva o padrão.</p>
       </div>
     </div>
   </div>
@@ -414,7 +438,7 @@
       <div class="s-label" style="justify-content:center"><div class="s-label-dot"></div><span data-i18n="cta_label">Junta-te</span></div>
       <h2 class="s-title" style="text-align:center" data-i18n="cta_title">Pronto para<br>o <em>próximo nível</em>?</h2>
       <p class="s-desc" style="text-align:center;margin:0 auto 36px" data-i18n="cta_desc">Regista o teu interesse e sê dos primeiros a entrar quando as portas abrirem.</p>
-      <a href="#" class="btn-primary" data-i18n="cta_btn">Registar Interesse</a>
+      <a href="https://discord.gg/rkJTSzCt" class="btn-primary" data-i18n="cta_btn">Registar Interesse</a>
       <div class="inline-footer">
         <span class="footer-copy">© 2026 — <span data-i18n="footer_rights">Todos os direitos reservados.</span></span>
         <ul class="footer-links"><li><a href="#">Discord</a></li><li><a href="#">GitHub</a></li><li><a href="#">Twitter</a></li></ul>
@@ -435,7 +459,7 @@ function pM(e,el){const r=el.getBoundingClientRect();el.style.setProperty('--mx'
 function pL(el){el.style.setProperty('--mx','50%');el.style.setProperty('--my','50%')}
 
 // i18n
-const T={pt:{nav_home:"Início",nav_about:"Sobre",nav_challenges:"Desafios",nav_join:"Juntar-se",nav_cta:"Entrar na Comunidade",hero_badge:"Em Breve — 2026",hero_title:'Onde a <em>elite</em> se encontra',hero_sub:"Uma comunidade exclusiva para hackers, builders e mentes curiosas que querem ir além do convencional.",hero_cta_primary:"Registar Interesse",hero_cta_secondary:"Saber Mais",scroll_hint:"Scroll para navegar",about_label:"Quem Somos",about_title:"Três pilares.<br>Uma missão.",about_desc:"Construímos uma comunidade assente em conhecimento, colaboração e desafio constante. Cada membro contribui para elevar o padrão.",pillar1_title:"Conhecimento",pillar1_desc:"Workshops, talks e recursos partilhados sobre cibersegurança, engenharia reversa, redes e muito mais.",pillar2_title:"Competição",pillar2_desc:"Desafios CTF regulares, hackathons internos e competições externas como equipa unificada.",pillar3_title:"Comunidade",pillar3_desc:"Um espaço seguro para experimentar, falhar e crescer. Mentoria entre pares e networking com a indústria.",challenges_label:"Desafios",challenges_title:"Testa os teus<br>limites.",challenges_desc:"Desafios ativos para te pores à prova. Aceitas o repto?",ch1_tag:"CRYPTO · WEB · FORENSICS",ch1_name:"Weekly CTF",ch1_desc:"Desafios semanais de Capture The Flag cobrindo criptografia, segurança web e análise forense.",ch1_freq:"Semanal",ch2_tag:"PENTESTING · RECON",ch2_name:"Bug Bounty Lab",ch2_desc:"Ambientes simulados para praticar pentesting, reconnaissance e exploração de vulnerabilidades.",ch2_freq:"Mensal",ch3_tag:"ATAQUE · DEFESA · TEMPO REAL",ch3_name:"Red vs Blue",ch3_desc:"Equipas de ataque contra equipas de defesa em cenários ao vivo. Estratégia e execução em tempo real.",ch3_freq:"Mensal",stat1_num:"200+",stat1_label:"Pré-registos",stat2_num:"50+",stat2_label:"Desafios Planeados",stat3_num:"12",stat3_label:"Eventos no 1º Ano",stat4_num:"∞",stat4_label:"Potencial",cta_label:"Junta-te",cta_title:'Pronto para<br>o <em>próximo nível</em>?',cta_desc:"Regista o teu interesse e sê dos primeiros a entrar quando as portas abrirem.",cta_btn:"Registar Interesse",footer_rights:"Todos os direitos reservados.",pag:["Início","Sobre","Desafios","Juntar-se"]},en:{nav_home:"Home",nav_about:"About",nav_challenges:"Challenges",nav_join:"Join",nav_cta:"Join the Community",hero_badge:"Coming Soon — 2026",hero_title:'Where the <em>elite</em> converge',hero_sub:"An exclusive community for hackers, builders and curious minds who want to push beyond the conventional.",hero_cta_primary:"Register Interest",hero_cta_secondary:"Learn More",scroll_hint:"Scroll to navigate",about_label:"Who We Are",about_title:"Three pillars.<br>One mission.",about_desc:"We're building a community grounded in knowledge, collaboration and constant challenge. Every member raises the standard.",pillar1_title:"Knowledge",pillar1_desc:"Workshops, talks and shared resources on cybersecurity, reverse engineering, networking and much more.",pillar2_title:"Competition",pillar2_desc:"Regular CTF challenges, internal hackathons and external competitions as a unified team.",pillar3_title:"Community",pillar3_desc:"A safe space to experiment, fail and grow. Peer mentoring and industry networking.",challenges_label:"Challenges",challenges_title:"Push your<br>limits.",challenges_desc:"Active challenges to test yourself. Ready to take them on?",ch1_tag:"CRYPTO · WEB · FORENSICS",ch1_name:"Weekly CTF",ch1_desc:"Weekly Capture The Flag challenges covering cryptography, web security and forensic analysis.",ch1_freq:"Weekly",ch2_tag:"PENTESTING · RECON",ch2_name:"Bug Bounty Lab",ch2_desc:"Simulated environments to practice pentesting, reconnaissance and vulnerability exploitation.",ch2_freq:"Monthly",ch3_tag:"ATTACK · DEFENSE · REAL-TIME",ch3_name:"Red vs Blue",ch3_desc:"Attack teams vs defense teams in live scenarios. Strategy and execution in real time.",ch3_freq:"Monthly",stat1_num:"200+",stat1_label:"Pre-registrations",stat2_num:"50+",stat2_label:"Planned Challenges",stat3_num:"12",stat3_label:"Events in Year 1",stat4_num:"∞",stat4_label:"Potential",cta_label:"Join Us",cta_title:'Ready for<br>the <em>next level</em>?',cta_desc:"Register your interest and be among the first to enter when the doors open.",cta_btn:"Register Interest",footer_rights:"All rights reserved.",pag:["Home","About","Challenges","Join"]}};
+const T={pt:{nav_home:"Início",nav_about:"Sobre",nav_challenges:"Desafios",nav_join:"Juntar-se",nav_cta:"Entrar na Comunidade",hero_badge:"Em Breve — 2026",hero_title:'Onde a <em>elite</em> se encontra',hero_sub:"Uma comunidade exclusiva para hackers éticos, builders e mentes curiosas que querem ir além do convencional.",hero_cta_primary:"Entrar",hero_cta_secondary:"Saber Mais",scroll_hint:"Scroll para navegar",about_label:"Quem Somos",about_title:"Três pilares.<br>Uma missão.",about_desc:"Construímos uma comunidade assente em conhecimento, colaboração e desafio constante. Cada membro contribui para elevar o padrão.",pillar1_title:"Conhecimento",pillar1_desc:"Workshops, talks e recursos partilhados sobre cibersegurança, engenharia reversa, redes e muito mais.",pillar2_title:"Competição",pillar2_desc:"Desafios CTF regulares, hackathons internos e competições externas como equipa unificada.",pillar3_title:"Comunidade",pillar3_desc:"Um espaço seguro para experimentar, falhar e crescer. Mentoria entre pares e networking com a indústria.",challenges_label:"Desafios",challenges_title:"Testa os teus<br>limites.",challenges_desc:"Desafios ativos para te pores à prova. Aceitas o repto?",about_mob_title:"Conhecimento.<br>Competição.<br><em>Comunidade.</em>",about_mob_desc:"Uma comunidade assente em desafio constante. Cada membro eleva o padrão.",ch1_tag:"CRYPTO · WEB · FORENSICS",ch1_name:"Weekly CTF",ch1_desc:"Desafios semanais de Capture The Flag cobrindo criptografia, segurança web e análise forense.",ch1_freq:"Semanal",ch2_tag:"PENTESTING · RECON",ch2_name:"Bug Bounty Lab",ch2_desc:"Ambientes simulados para praticar pentesting, reconnaissance e exploração de vulnerabilidades.",ch2_freq:"Mensal",ch3_tag:"ATAQUE · DEFESA · TEMPO REAL",ch3_name:"Red vs Blue",ch3_desc:"Equipas de ataque contra equipas de defesa em cenários ao vivo. Estratégia e execução em tempo real.",ch3_freq:"Mensal",stat1_num:"200+",stat1_label:"Pré-registos",stat2_num:"50+",stat2_label:"Desafios Planeados",stat3_num:"12",stat3_label:"Eventos no 1º Ano",stat4_num:"∞",stat4_label:"Potencial",cta_label:"Junta-te",cta_title:'Pronto para<br>o <em>próximo nível</em>?',cta_desc:"Regista o teu interesse e sê dos primeiros a entrar quando as portas abrirem.",cta_btn:"Registar Interesse",footer_rights:"Todos os direitos reservados.",pag:["Início","Sobre","Desafios","Juntar-se"]},en:{nav_home:"Home",nav_about:"About",nav_challenges:"Challenges",nav_join:"Join",nav_cta:"Join the Community",hero_badge:"Coming Soon — 2026",hero_title:'Where the <em>elite</em> converge',hero_sub:"An exclusive community for ethical hackers, builders and curious minds who want to push beyond the conventional.",hero_cta_primary:"Discord",hero_cta_secondary:"Learn More",scroll_hint:"Scroll to navigate",about_label:"Who We Are",about_title:"Three pillars.<br>One mission.",about_desc:"We're building a community grounded in knowledge, collaboration and constant challenge. Every member raises the standard.",pillar1_title:"Knowledge",pillar1_desc:"Workshops, talks and shared resources on cybersecurity, reverse engineering, networking and much more.",pillar2_title:"Competition",pillar2_desc:"Regular CTF challenges, internal hackathons and external competitions as a unified team.",pillar3_title:"Community",pillar3_desc:"A safe space to experiment, fail and grow. Peer mentoring and industry networking.",challenges_label:"Challenges",challenges_title:"Push your<br>limits.",challenges_desc:"Active challenges to test yourself. Ready to take them on?",about_mob_title:"Knowledge.<br>Competition.<br><em>Community.</em>",about_mob_desc:"A community built on constant challenge. Every member raises the standard.",ch1_tag:"CRYPTO · WEB · FORENSICS",ch1_name:"Weekly CTF",ch1_desc:"Weekly Capture The Flag challenges covering cryptography, web security and forensic analysis.",ch1_freq:"Weekly",ch2_tag:"PENTESTING · RECON",ch2_name:"Bug Bounty Lab",ch2_desc:"Simulated environments to practice pentesting, reconnaissance and vulnerability exploitation.",ch2_freq:"Monthly",ch3_tag:"ATTACK · DEFENSE · REAL-TIME",ch3_name:"Red vs Blue",ch3_desc:"Attack teams vs defense teams in live scenarios. Strategy and execution in real time.",ch3_freq:"Monthly",stat1_num:"200+",stat1_label:"Pre-registrations",stat2_num:"50+",stat2_label:"Planned Challenges",stat3_num:"12",stat3_label:"Events in Year 1",stat4_num:"∞",stat4_label:"Potential",cta_label:"Join Us",cta_title:'Ready for<br>the <em>next level</em>?',cta_desc:"Register your interest and be among the first to enter when the doors open.",cta_btn:"Discord",footer_rights:"All rights reserved.",pag:["Home","About","Challenges","Join"]}};
 let cL='pt';
 function switchLang(l){cL=l;document.documentElement.setAttribute('data-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(T[l][k])el.innerHTML=T[l][k]});buildPag()}
 
